@@ -43,7 +43,7 @@ if expiring_certs:
                             refresh_url(
                                 domain=i,
                                 filepath=filepath,
-                                filename=filepath
+                                filename=filename
                             )
                     if item['type'] == "cdn":
                         deploy_cdn(certid=certid, domain=i)
