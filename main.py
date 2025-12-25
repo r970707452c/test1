@@ -19,7 +19,15 @@ if expiring_certs:
         if i not in ["keycloak.aubo-robotics.cn",
                      "download.aubo-robotics.cn"]:
             certid = apply_cert(domain=i)
+            if certid is None:
+                print(f"Failed to apply certificate for {i}")
+                continue
+
             dvauthinfo = get_apply_cert(certid=certid)
+            if dvauthinfo is None:
+                print(f"Failed to get auth info for {i}")
+                continue
+
             dvauthinfo_json = json.loads(dvauthinfo)
             filename = dvauthinfo_json["filename"]
             filepath = dvauthinfo_json["filepath"]
