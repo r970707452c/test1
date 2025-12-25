@@ -94,7 +94,7 @@ def refresh_url(domain, filepath, filename):
         # 实例化一个请求对象，每个接口都会对应一个request对象
         req = cdn_models.PurgeUrlsCacheRequest()
         params = {
-            "Urls": ["https://" + domain + filepath + filename]
+            "Urls": [f"https://{domain}{filepath}{filename}"]
         }
         req.from_json_string(json.dumps(params))
 
